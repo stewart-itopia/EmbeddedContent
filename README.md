@@ -1,0 +1,2 @@
+# EmbeddedContent
+Embedded Content - Umbraco
