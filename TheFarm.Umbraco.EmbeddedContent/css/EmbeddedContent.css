@@ -1,0 +1,247 @@
+﻿div.ECtop 
+{
+    width: 510px;
+}
+
+div.ECtop a 
+{
+    margin-bottom: 6px; 
+    float: right;
+}
+
+div.ECtop a.ECshowValidation
+{
+    margin-right: 10px;
+}
+
+div.ECtop a div.backgroundSpritePrevalue, 
+div.ECtop a div.backgroundSpriteContent
+{
+    height: 20px; 
+    width: 20px; 
+    background-repeat: no-repeat;
+}
+
+div.ECtop a.EChelplink div.backgroundSpritePrevalue, 
+div.ECtop a.EChelplink div.backgroundSpriteContent
+{
+    background-position: 0px 0px;
+}
+
+div.ECtop a.ECshowType div.backgroundSpritePrevalue,
+div.ECtop a.ECshowType div.backgroundSpriteContent
+{
+    background-position: 0px -80px;
+}
+
+div.ECtop a.ECshowDescription div.backgroundSpritePrevalue,
+div.ECtop a.ECshowDescription div.backgroundSpriteContent
+{
+    background-position: 0px -160px;
+}
+
+div.ECtop a.ECshowTitle div.backgroundSpritePrevalue,
+div.ECtop a.ECshowTitle div.backgroundSpriteContent
+{
+    background-position: 0px -240px;
+}
+
+div.ECtop a.ECshowRequired div.backgroundSpritePrevalue,
+div.ECtop a.ECshowRequired div.backgroundSpriteContent
+{
+    background-position: 0px -320px;
+}
+
+div.ECtop a.ECshowValidation div.backgroundSpritePrevalue,
+div.ECtop a.ECshowValidation div.backgroundSpriteContent
+{
+    background-position: 0px -400px;
+}
+
+.backgroundSpritePrevalue,
+.backgroundSpriteContent
+{
+    background-repeat: no-repeat;
+}
+
+div.bigButton
+{
+    background-repeat: no-repeat;
+    width: 73px;
+    height: 20px;
+}
+
+div#helpText
+{
+    clear: both; 
+    display: none; 
+    margin-bottom: 10px; 
+    width: 460px; 
+    height: 160px; 
+    position: absolute;
+    left: 150px;
+    top: 6px;
+    background-color: gray;
+    z-index: 2;
+    padding: 6px;
+}
+
+div#helpText div.helpTextInner
+{
+    padding: 10px; 
+    background-color: white;
+    overflow: auto; 
+    height: 140px;
+}
+
+div.ECsortListContainer
+{
+    border: 1px solid #CCCCCC; 
+    padding: 2px 5px; 
+    min-height: 120px;
+}
+
+div.ECsortListContainer ul.ECsortList
+{
+    list-style: none; 
+    margin: 0; 
+    padding: 0;
+}
+
+div.ECsortListContainer .ECdraghandle
+{
+    position: absolute; 
+    top: 2px; 
+    bottom: 2px; 
+    width: 10px; 
+    background-color: #C8C8C8;
+}
+
+div.ECsortListContainer .remove
+{
+    text-decoration: none;
+}
+
+div.ECsortListContainer .edit
+{
+    text-decoration: none;
+}
+
+div.ECsortListContainer ul.ECsortList li
+{
+    margin: 3px 0; 
+    background-color: #EDEDF5; 
+    padding: 3px; 
+    position: relative;    
+}
+
+div.ECsortListContainer ul.ECsortList li.ECregular
+{
+    border: solid 1px #E1E1E1; 
+}
+
+div.ECsortListContainer ul.ECsortList li.EChighlight
+{
+    border: dashed 1px #D63F1C; 
+}
+
+div.ECsortListContainer ul.ECsortList li div.ECitemInner
+{
+    margin-left: 15px;
+    line-height: 17px;
+}
+
+div.ECsortListContainer ul.ECsortList li div.ECitemInner a
+{
+    vertical-align: middle;
+    display: inline-block;
+}
+
+div.ECsortListContainer ul.ECsortList li span
+{
+    display: none;
+}
+
+div.ECaddBox
+{
+    display: none; 
+    padding: 5px; 
+    border: 1px solid #CCCCCC; 
+    margin-top: 10px; 
+}
+
+div.ECaddBox table.ECaddBoxTable td
+{
+    vertical-align: top;     
+}
+
+div.ECaddBox table.ECaddBoxTable td.ECfirst
+{
+    padding-top: 5px; 
+    padding-bottom: 3px;
+}
+
+div.ECaddBox table.ECaddBoxTable td.ECsecond
+{
+    padding-left: 10px; 
+    padding-bottom: 3px;
+}
+
+div.ECaddLinkContainer
+{
+    margin-top: 10px;
+}
+
+div.ECaddBoxPrevalues
+{
+    width: 500px;
+    display: none; 
+    padding: 5px; 
+    border: 1px solid #CCCCCC; 
+    margin-top: 10px; 
+}
+
+div.ECaddBoxPrevalues td.vt
+{
+    vertical-align: top;
+}
+div.ECaddBoxPrevalues td.pl10
+{
+    padding-left: 10px;
+}
+div.ECaddBoxPrevalues td.pt10
+{
+    padding-top: 10px;
+}
+
+div.ECbigButton
+{
+    height: 17px; 
+    width: 67px; 
+    background-repeat: no-repeat;
+}
+
+a.remove div.ECbigButton
+{
+    background-position: 0px -40px;
+}
+
+a.edit div.ECbigButton
+{
+    background-position: 0px 0px;
+}
+
+a#addPropertyLink div.ECbigButton, a.ECaddPropertyLink div.ECbigButton
+{
+    background-position: 0px -80px;
+}
+
+a#closeLink div.ECbigButton, a.ECcloseLink div.ECbigButton
+{
+    background-position: 0px -120px;
+}
+
+a#addLink div.ECbigButton, a.ECaddLink div.ECbigButton
+{
+    background-position: 0px -200px;
+}

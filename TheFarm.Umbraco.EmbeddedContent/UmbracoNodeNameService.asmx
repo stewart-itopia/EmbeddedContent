@@ -1,0 +1,1 @@
+﻿<%@ WebService Language="C#" Class="TheFarm.Umbraco.EmbeddedContent.UmbracoNodeNameService" %>

@@ -1,0 +1,85 @@
+﻿INTRODUCTION
+
+This custom Umbraco datatype lets you do the following:
+- customize the properties of a single entity (say a Title as TextString, 
+  a Description as Textbox multiple and an internal link as content picker.
+- after adding it to the property list of a node you can add as many of these entities 
+  to the list for that data type and order them around as you see fit. You can also
+  edit and delete them.
+- The data for the content node will be stored as custom XML which can then be accessed
+  programmatically.
+
+In the end of the day it is the same outcome as if you were to create these entities as 
+a document type (where you can then set these properties as well) and add nodes of these types 
+to the document you are editing. The biggest difference is that you don't need these
+additional nodes in your tree, the biggest disadvantage is that it doesn't have as
+much functionality as if you were using additional nodes to achieve this (e.g. publish
+at a given time).
+
+
+IN DETAIL
+
+The PrevalueEditor:
+The configuration (aka the property configuration for one entity in the list) is saved as
+custom separated string, e.g.
+|id:1;Name: Identifier; Alias: identifier; Type: Textstring; Description: Identifies the type of specification for this entry; Show in title? true;;
+|id:2;Name: Value; Alias: value; Type: Textstring; Description: The value for this specification entry; Show in title? true;
+
+id: unique Id for this field. This is necessary to allow certain changes to the field (e.g. Name) 
+  and still be able to keep/associate the saved content.
+Name: name of the field
+Alias: the alias as used in the Xml for that field
+Type: the type of the field. Currently supported: Textstring, Textbox multiple, True/False, Content Picker, Media Picker, Simple editor
+Description: short description of the field for the user
+Show in title? if true then this field will be shown in the content editors list
+
+Whenever a new field gets added to the list it will first get added to the visible list (aka
+a <li> string is created and then inserted into the property <ul>. Then SetHiddenValue() is called
+which takes the whole <ul> and creates a custom separated string which gets saved in the
+hidden value. Upon save only the hidden value is retrieved, the JS is responsible for
+keeping visible list and custom separeted list in sync.
+
+
+The Content editor interface:
+
+The control has 2 hidden values:
+XmlValue: this is the actual value of the control. It is an Xml representation of the data to be saved, albeit contains
+  a bit extra information to what is then actually saved to the database. Example:
+  <data>
+    <item id="2">
+	  <identifier propertyid="1" name="Identifier" description="Identifies the type of specification for this entry" 
+	    type="Textstring" showintitle="True">456456</identifier>
+	  <value propertyid="2" name="Value" description="The value for this specification entry" 
+	    type="Textstring" showintitle="True">rte</value></item>
+	<item id="1">
+	  <identifier propertyid="1" name="Identifier" description="Identifies the type of specification for this entry" 
+	    type="Textstring" showintitle="True">123123</identifier>
+	  <value propertyid="2" name="Value" description="The value for this specification entry" 
+	    type="Textstring" showintitle="True">qweqweqwe</value>
+    </item>
+  </data>
+  As one can see the order of the items has been changed in the control, yet only the position changes and not the ids for each item.
+  The value for each field has been replaced with the actual value.
+XmlSchema: this is basically a Xml structure for a single entity based on the information from the prevalue data. This structure
+  helps to build the XmlValue, is used when a new entity is created as well as to traverse/understand the XmlValue itself. Example:
+  <item id="">
+    <identifier propertyid="1" name="Identifier" description="Identifies the type of specification for this entry" 
+	  type="Textstring" showintitle="True">|value1|</identifier>
+	<value propertyid="2" name="Value" description="The value for this specification entry" 
+	  type="Textstring" showintitle="True">|value2|</value>
+  </item>
+  The propertyid is the same as the id of the field in the prevalue data. 
+
+This control works the other way around than the prevalue editor. When a new entity is added to the list it first gets 
+created as single entity using the XmlSchema, then added to the XmlValue, and then a function is called to update the 
+visual representation. 
+
+One remark with regards to the content and media picker. If the values are set in the code and not via user interaction 
+both controls are not showing the proper 'state', aka displaying the selected node name and 'choose' + 'delete'. I 
+couldn't find anywhere how I can update the controls via javascript, so I am setting the correct state now myself
+by hiding/showing certain elements. That works all fine apart from displaying the selected node name. In order to 
+retrieve the node name I had to write a custom HttpHandler that will return the name of the node with the given id.
+
+
+Web.config handler addition:
+<add name="UmbracoNodeName" path="umbraco/REST/umbraconodename" verb="*" type="TheFarm.Umbraco.EmbeddedContent.UmbracoNodeNameHandler, TheFarm.Umbraco.EmbeddedContent" resourceType="Unspecified" />
